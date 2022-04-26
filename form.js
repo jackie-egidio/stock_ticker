@@ -17,15 +17,20 @@ console.log(q.pathname);
 
 http.createServer(function (req, res) {
     console.log("in createServer");
-  var q = url.parse(req.url, true);
-  var filename = "." + q.pathname;
-  fs.readFile(filename, function(err, data) {
-    if (err) {
-      res.writeHead(404, {'Content-Type': 'text/html'});
-      return res.end("404 Not Found");
-    } 
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write("hello");
-    return res.end();
-  });
+    
+    var qobj = url.parse(req.url, true).query;
+    var c_or_t = qobj.c_or_t;
+//     var input.qobj.input;
+    res.write(c_or_t);
+//   var q = url.parse(req.url, true).query;
+//   var filename = "." + q.pathname;
+//     if (err) {
+//       res.writeHead(404, {'Content-Type': 'text/html'});
+//       return res.end("404 Not Found");
+//     } 
+//     res.writeHead(200, {'Content-Type': 'text/html'});
+      
+//     var element = q.;
+//     res.write("hello");
+//     return res.end();
 }).listen(8080);
