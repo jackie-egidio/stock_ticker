@@ -1,16 +1,7 @@
 var url = require('url');
 var http = require('http');
-var fs = require('fs');
 var adr = 'https://jackie-egidio.github.io/stock_ticker/';
 var q = url.parse(adr, true);
-
-// var sqlite3 = require('sqlite3').verbose();
-// var express = require('express');
-// var http = require('http');
-// var path = require("path");
-// var bodyParser = require('body-parser');
-// var helmet = require('helmet');
-// var rateLimit = require("express-rate-limit");
 
 console.log(q.host); 
 console.log(q.pathname); 
@@ -20,9 +11,33 @@ http.createServer(function (req, res) {
     
     var qobj = url.parse(req.url, true).query;
     var c_or_t = qobj.c_or_t;
-//     var input.qobj.input;
+    var comp_or_tick = qobj.com_or_tick_input;
+    
+    res.write(comp_or_tick);
     res.write(c_or_t);
-//   var q = url.parse(req.url, true).query;
+
+    var MongoClient = require('mongodb').MongoClient;
+    url = "mongodb+srv://dummy_user_2:Dajhlfhdalkfdkal@cluster0.uinkd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
+    // Connect to the db
+    // MongoClient.connect(url, function (err, db) {
+    //     console.log("connected successfully");
+    //     if(err) throw err;
+
+    //     database = db.db("stock_ticker");
+    //     collection = database.collection("companies");
+
+    //     // database find code
+    //     if (c_or_t == "Company") {
+    //       res.write(collection.find( { company: comp_or_tick } ));
+    //     } else {
+    //       res.write(collection.find( { ticker: comp_or_tick } ));
+    //     }
+    //     console.log("queried successfully");
+    // });
+}).listen(8080);
+
+// var q = url.parse(req.url, true).query;
 //   var filename = "." + q.pathname;
 //     if (err) {
 //       res.writeHead(404, {'Content-Type': 'text/html'});
@@ -33,4 +48,3 @@ http.createServer(function (req, res) {
 //     var element = q.;
 //     res.write("hello");
 //     return res.end();
-}).listen(8080);
