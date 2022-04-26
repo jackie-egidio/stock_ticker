@@ -9,6 +9,8 @@ console.log(q.pathname);
 http.createServer(function (req, res) {
     console.log("in createServer");
     
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    
     var qobj = url.parse(req.url, true).query;
     var c_or_t = qobj.c_or_t;
     var comp_or_tick = qobj.com_or_tick_input;
