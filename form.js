@@ -4,6 +4,14 @@ var fs = require('fs');
 var adr = 'https://jackie-egidio.github.io/stock_ticker/';
 var q = url.parse(adr, true);
 
+// var sqlite3 = require('sqlite3').verbose();
+// var express = require('express');
+// var http = require('http');
+// var path = require("path");
+// var bodyParser = require('body-parser');
+// var helmet = require('helmet');
+// var rateLimit = require("express-rate-limit");
+
 console.log(q.host); 
 console.log(q.pathname); 
 
